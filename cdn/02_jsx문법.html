@@ -33,6 +33,8 @@
             return (
                 // 2. JSX는 반드시 하나의 부모 태그로 감싸야 합니다.
                 // <></>: flagments 태그 (ver.16)
+                // <div></div>
+                // <React.Fragment></React.Fragment>
                 <>
                     <div>
                         <h1>제목</h1>
@@ -51,6 +53,8 @@
         // 예) className, htmlFor, tabIndex
         const div = <div className="box">내용</div>;
         const lbl = <label htmlFor="inputId">이름</label>;
+        const input1 = <input disabled /> // 속성값을 생략하면 true
+        const input2 = <input disabled={false} />
 
         // 4. JSX 안에서는 JavaScript 표현식을 {}로 감쌉니다.
         const name = "React";
@@ -60,14 +64,85 @@
         // -> 3항 연산자 또는 && 연산자를 조건식으로 사용!
         const isLoggedIn = false;
         const isAdmin = true;
-        const login = <div>{ isLoggedIn ? <p>환영합니다</p> : <p>로그인하세요</p> }</div>;
-        const admin = <div>{ isAdmin && <button>관리자 페이지</button> }</div>;
+        const login = <div>{isLoggedIn ? <p>환영합니다</p> : <p>로그인하세요</p>}</div>;
+        const admin = <div>{isAdmin && <button>관리자 페이지</button>}</div>;
 
         // 4-2 인라인 style 속성은 객체 형태로 작성한다.
         const element4 = <h1 style={{ color: 'red', fontSize: '20px' }}>스타일 적용</h1>;
+        const element5 = <h1 style={{ color: 'lightblue', fontSize: '20px' }}>스타일 적용</h1>;
 
+
+        // 4-3 이벤트 핸들러 - 속성명은 카멜 표기법
+        // App4 컴포넌트
+        function App4() {
+            // doSomething 함수 사용
+            function doSomething() { alert('Button clicked!') }
+            return (
+                <>
+                    {/* JSX 영역 주석 처리: 중괄호 안에 넣어야함 */}
+                    <button onClick={doSomething}>Click Me</button>
+                </>
+            );
+        }
+
+        function App5() {
+            // const [변수, 함수] = React.useState(인자);
+            const [text, setText] = React.useState('');
+
+            const handleChange = e => setText(e.target.value);
+            const handClick = del => setText(del);
+
+            // function handleChange(e) {
+            //     setText(e.target.value);
+            //     console.log(e.value);
+            // }
+
+            return (
+                // onChange: 입력값의 변경이 있을 때
+                <><input type="text" value={text} onChange={handleChange} />
+                    <p>You typed: {text}</p>
+                    {/* <button onClick={function(){handClick('')}}>Delete</button> */}
+                    <button onClick={() => handClick('')}>Delete</button>
+
+                </>
+            );
+        }
+
+        // 5. 변수 출력
+        /* JSX에서 변수를 출력하려면 중괄호{} 사용 */
+        function App6() {
+            const name = "Alice";
+            function getGreeting(name) {
+                // 순수 JS에서 템플릿 리터럴: ${표현식}
+                return `Hi, ${name}`;
+            }
+
+            return (
+                <div>
+                    {/* JSX의 표현식: {표현식} */}
+                    <h1>Hello, {name}!</h1>
+                    <h2>{getGreeting("Tom")}</h2>
+                </div>
+            );
+        }
+
+        // 배열 map()으로 출력
+        function App7() {
+            const fruits = ['🍎', '🍌', '🍇'];
+            // 배열.map((요소, 인덱스) => {});
+            return (
+            <ul>
+                {fruits.map((fruit, index) => (
+                    <li key={index}>{fruit}</li>
+                ))}
+            </ul >
+            );
+        }
+
+        // 렌더링(Rendering): 화면 출력
         const root = ReactDOM.createRoot(document.querySelector('#root'));
-        root.render(element4); // 결과: <h1>React 배우기</h1>
+        root.render(<App7 />);
+
     </script>
 </body>
 
