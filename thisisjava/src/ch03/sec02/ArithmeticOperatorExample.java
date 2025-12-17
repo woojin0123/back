@@ -1,5 +1,8 @@
 package ch03.sec02;
 
+/**
+ * 뷰(View)
+ */
 public class ArithmeticOperatorExample {
 	public static void main(String[] args) {
 		byte v1 = 10;
