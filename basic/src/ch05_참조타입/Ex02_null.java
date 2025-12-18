@@ -1,4 +1,4 @@
-package ch05;
+package ch05_참조타입;
 
 /**
  * 참조 타입은 null값을 가질 수 있음
