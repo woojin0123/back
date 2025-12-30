@@ -53,7 +53,7 @@ class A {
 
 		B b1 = new B(false); // 같은 패키지의 public 클래스, public 생성자
 		B b2 = new B(10);// default 생성자
-		B b3 = new B("문자열"); // private 생성자, 에러
+		//B b3 = new B("문자열"); // private 생성자, 에러
 		// 같은 클래스의 생성자더라도 private는 자기만 사용 가능
 	}
 	

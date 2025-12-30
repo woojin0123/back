@@ -1,6 +1,6 @@
-package ch09.sec04.exam03;
+package ch09_중첩.ex04_외부클래스멤버접근;
 
-public class A {
+public class A2 {
 	//메소드
 	public void method1(int arg) { 					//final int arg
 		//로컬 변수 

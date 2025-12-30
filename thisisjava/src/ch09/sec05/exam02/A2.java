@@ -1,6 +1,6 @@
 package ch09.sec05.exam02;
 
-public class A {
+public class A2 {
 	//A 인스턴스 필드
 	String field = "A-field";
 	
@@ -26,8 +26,8 @@ public class A {
 			this.method();
 	
 			//A 객체의 필드와 메소드 사용
-			System.out.println(A.this.field);
-			A.this.method();
+			System.out.println(A2.this.field);
+			A2.this.method();
 		}
 	}
 	

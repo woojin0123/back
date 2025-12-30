@@ -1,6 +1,6 @@
 package ch09.sec04.exam02;
 
-public class A {
+public class A1 {
 	//메소드
 	void useB() {
 		//로컬 클래스

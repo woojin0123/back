@@ -1,11 +1,11 @@
-package ch09.sec04.exam02;
+package ch09.sec05.exam02;
 
-public class AExample {
+public class A2Example {
 	public static void main(String[] args) {
 		//A 객체 생성
-		A a = new A();
+		A2 a2 = new A2();
 
 		//A 메소드 호출
-		a.useB();
+		a2.useB();
 	}
 }
