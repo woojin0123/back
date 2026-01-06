@@ -1,7 +1,7 @@
-package ch09_중첩.ex02_정적멤버클래스;
+package ch09_중첩선언과익명객체.ex02_정적멤버클래스;
 
 public class A {
-	//인스턴스 멤버 클래스
+	//정적 멤버 클래스
 	static class B {}
 
 	//인스턴스 필드 값으로 B 객체 대입

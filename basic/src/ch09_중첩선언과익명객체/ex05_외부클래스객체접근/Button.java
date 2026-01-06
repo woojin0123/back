@@ -1,35 +1,21 @@
-package ch09_중첩.ex05_외부클래스객체접근;
+package ch09_중첩선언과익명객체.ex05_외부클래스객체접근;
 
-public class A {
-	//A의 인스턴스 필드와 메소드
-	int field1;
-	void method1() { }
-
-	//A의 정적 필드와 메소드
-	static int field2;
-	static void method2() { }
-
-	//인스턴스 멤버 클래스
-	class B {
-		void method() {
-			//A의 인스턴스 필드와 메소드 사용
-			field1 = 10;			//(o)
-			method1();			  //(o)		
-			//A의 정적 필드와 메소드 사용
-			field2 = 10;			//(o)
-			method2();			  //(o)
-		}
+public class Button {
+	//정적 멤버 인터페이스
+	public static interface ClickListener {
+		//추상 메소드
+		void onClick();
 	}
 
-	//정적 멤버 클래스
-	static class C {
-		void method() {
-			//A의 인스턴스 필드와 메소드 사용
-			//field1 = 10;		//(x)
-			//method1();			//(x)
-			//A의 정적 필드와 메소드 사용
-			field2 = 10;			//(o)
-			method2();			  //(o)
-		}
-	}	
+	//필드
+	private ClickListener clickListener;
+
+	//메소드
+	public void setClickListener(ClickListener clickListener) {
+		this.clickListener = clickListener;
+	}
+
+	public void click() {
+		this.clickListener.onClick();
+	}
 }

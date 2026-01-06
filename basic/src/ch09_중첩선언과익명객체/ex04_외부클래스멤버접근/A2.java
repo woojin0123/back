@@ -1,32 +1,40 @@
-package ch09_중첩.ex04_외부클래스멤버접근;
+package ch09_중첩선언과익명객체.ex04_외부클래스멤버접근;
 
 public class A2 {
-	//메소드
-	public void method1(int arg) { 					//final int arg
-		//로컬 변수 
-		int var = 1; 						 		//final int var = 1;
-		
-		//로컬 클래스
-		class B {
-			//메소드
-			void method2() {
-				//로컬 변수 읽기
-				System.out.println("arg: " + arg);		//(o)
-				System.out.println("var: " + var);		//(o)
-				
-				//로컬 변수 수정
-				//arg = 2;									      //(x)
-				//var = 2;									      //(x)
-			}
-		}
-		
-		//로컬 객체 생성
-		B b = new B();
-		//로컬 객체 메소드 호출
-		b.method2();
-		
-		//로컬 변수 수정
-		//arg = 3;											      //(x)
-		//var = 3;											      //(x)
+	//A 인스턴스 필드
+	String field = "A-field";
+	
+	//A 인스턴스 메소드
+	void method() {
+		System.out.println("A-method");
 	}
+	
+	//인스턴스 멤버 클래스
+	class B {
+		//B 인스턴스 필드
+		String field = "B-field";
+	
+		//B 인스턴스 메소드
+		void method() {
+			System.out.println("B-method");
+		}
+	
+		//B 인스턴스 메소드
+		void print() {
+			//B 객체의 필드와 메소드 사용
+			// this는 객체 자기 자신
+			System.out.println(this.field);
+			this.method();
+	
+			//A 객체의 필드와 메소드 사용
+			System.out.println(A2.this.field);
+			A2.this.method();
+		}
+	}
+	
+	//A의 인스턴스 메소드
+	void useB() {
+		B b = new B();
+		b.print();
+	}	
 }

@@ -1,32 +1,41 @@
-package ch09_중첩.ex05_외부클래스객체접근;
+package ch09_중첩선언과익명객체.ex05_외부클래스객체접근;
 
-public class A2 {
-	//메소드
-	public void method1(int arg) { 					//final int arg
-		//로컬 변수 
-		int var = 1; 						 		//final int var = 1;
+public class ButtonExample {
+	public static void main(String[] args) {
+		//Ok 버튼 객체 생성
+		Button btnOk = new Button();
+
+		//Ok 버튼 클릭 이벤트를 처리할 ClickListener 구현 클래스(로컬 클래스)
+		class OkListener implements Button.ClickListener {
+			@Override
+			public void onClick() {
+				System.out.println("Ok 버튼을 클릭했습니다.");
+			}
+		}
+
+		//Ok 버튼 객체에 ClickListener 구현 객체 주입
+		btnOk.setClickListener(new OkListener());
 		
-		//로컬 클래스
-		class B {
-			//메소드
-			void method2() {
-				//로컬 변수 읽기
-				System.out.println("arg: " + arg);		//(o)
-				System.out.println("var: " + var);		//(o)
-				
-				//로컬 변수 수정
-				//arg = 2;									      //(x)
-				//var = 2;									      //(x)
+		//Ok 버튼 클릭하기
+		btnOk.click();
+
+		//-----------------------------------------------------------------------------
+		
+		//Cancel 버튼 객체 생성
+		Button btnCancel = new Button();
+
+		//Cancel 버튼 클릭 이벤트를 처리할 ClickListener 구현 클래스(로컬 클래스)
+		class CancelListener implements Button.ClickListener {
+			@Override
+			public void onClick() {
+				System.out.println("Cancel 버튼을 클릭했습니다.");
 			}
 		}
 		
-		//로컬 객체 생성
-		B b = new B();
-		//로컬 객체 메소드 호출
-		b.method2();
+		//Cancel 버튼 객체에 ClickListener 구현 객체 주입
+		btnCancel.setClickListener(new CancelListener());
 		
-		//로컬 변수 수정
-		//arg = 3;											      //(x)
-		//var = 3;											      //(x)
+		//Cancel 버튼 클릭하기
+		btnCancel.click();
 	}
 }
