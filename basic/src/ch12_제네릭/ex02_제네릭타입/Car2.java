@@ -1,4 +1,4 @@
-package ch13.sec02.exam02;
+package ch12_제네릭.ex02_제네릭타입;
 
 public class Car2 {
 	public void run() {

@@ -1,8 +1,8 @@
 package ch13.sec02.exam02;
 	
-public class CarAgency implements Rentable<Car>{
+public class CarAgency implements Rentable<Car2>{
 	@Override
-	public Car rent() {
-		return new Car();
+	public Car2 rent() {
+		return new Car2();
 	}
 }

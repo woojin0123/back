@@ -2,7 +2,7 @@ package ch15.sec03.exam01;
 
 import java.util.*;
 
-public class HashSetExample {
+public class HashSetExample1 {
 	public static void main(String[] args) {
 		//HashSet 컬렉션 생성
 		Set<String> set = new HashSet<String>();

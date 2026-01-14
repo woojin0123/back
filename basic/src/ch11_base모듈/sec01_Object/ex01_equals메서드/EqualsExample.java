@@ -1,7 +1,5 @@
 package ch11_base모듈.sec01_Object.ex01_equals메서드;
-
 /**
- *  회원가입 여부 확인할 때 사용!
  * Object의 equals() 메서드
  * 	- 객체의 번지를 비교하고 boolean 값을 리턴한다.
  *  - 비교 연산자인 ==과 동일한 결과를 리턴한다.
@@ -21,7 +19,7 @@ public class EqualsExample {
 		Member obj2 = new Member("blue");
 		Member obj3 = new Member("red");
 
-		// 객체.equals(객체2)
+		// 기준객체1.equals(비교객체2)
 		if(obj1.equals(obj2)) {
 			System.out.println("obj1과 obj2는 동등합니다.");
 		} else {

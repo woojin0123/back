@@ -1,4 +1,4 @@
-package ch15.sec03.exam02;
+package ch14_컬렉션.ex04_HashSet;
 
 import java.util.*;
 	
