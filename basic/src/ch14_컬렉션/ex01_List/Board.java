@@ -1,4 +1,4 @@
-package ch14_컬렉션.ex01_ArrayList;
+package ch14_컬렉션.ex01_List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
