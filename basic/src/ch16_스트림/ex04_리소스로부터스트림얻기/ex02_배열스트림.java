@@ -3,7 +3,6 @@ package ch16_스트림.ex04_리소스로부터스트림얻기;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
 /**
  * 배열로부터 스트림 얻기
  * 	- java.util.Arrays 클래스를 이용하면 다양한 종류의 배열로부터 스트림을 얻을 수 있다. 

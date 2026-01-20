@@ -3,7 +3,6 @@ package ch16_스트림.ex02_내부반복자;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
-
 /**
  * Stream은 Iterator와 비슷한 반복자이지만 다음과 같은 차이점이 있다.
  * 	1. 내부 반복자이므로 처리 속도가 빠르고, 병렬 처리에 효율적이다.
@@ -24,21 +23,24 @@ import java.util.stream.Stream;
 // List 컬렉션의 내부 반복자를 이용해서 병렬 처리하는 방법을 보여준다.
 // parallelStream() 메서드로 병렬 처리 스트림을 얻고,
 // forEach() 메서드를 호출할 때 요소 처리 방법인 람다식을 제공한다.
-// 람다식은 처리되는 요소가 무엇이고, 어떤 스레드가 처리하는지를 출력한다.
+// 람다식은 처리되는 요소가 무엇이고, 어떤 스레드가 처리하는지를 출력한다.	
 public class ParallelStreamExample {
 	public static void main(String[] args) {
 		//List 컬렉션 생성
-		List<String> list = new ArrayList<>();
+		List<String> list = new ArrayList< >();
 		list.add("홍길동");
 		list.add("신용권");
 		list.add("감자바");
 		list.add("람다식");
 		list.add("박병렬");
 
-		// 병렬 처리
-		// 병렬 스트림 얻기
+		//병렬 처리
+		// Thread.currentThread().getName()
+		// ForkJoinPool.commonPool-worker-1
+		//  - ForkJoinPool.commonPool: 자바 8부터 도입된 공용 스레드 풀
+		//  - worker: 작업을 실행하고 있는 스레드
+		//  - 숫자: 스레드 구분 인덱스 번호
 		Stream<String> parallelStream = list.parallelStream();
-		// 람다식: 요소 처리 방법
 		parallelStream.forEach( name -> {
 			System.out.println(name + ": " + Thread.currentThread().getName());
 		} );

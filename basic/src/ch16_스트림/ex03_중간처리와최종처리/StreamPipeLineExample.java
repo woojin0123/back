@@ -2,7 +2,8 @@ package ch16_스트림.ex03_중간처리와최종처리;
 
 import java.util.Arrays;
 import java.util.List;
-
+//import java.util.stream.IntStream;
+//import java.util.stream.Stream;
 /**
  * 중간 처리와 최종 처리
  *  - 스트림은 하나 이상 연결될 수 있다.
@@ -31,20 +32,19 @@ public class StreamPipeLineExample {
 				);
 
 		//방법1
-		/*
- 		Stream<Student> studentStream = list.stream();
- 		//중간 처리(학생 객체를 점수로 매핑)
- 		IntStream scoreStream = studentStream.mapToInt(student -> student.getScore());
-		//최종 처리(평균 점수)
- 		double avg = scoreStream.average().getAsDouble();
-		*/
+// 		Stream<Student> studentStream = list.stream();
+// 		//중간 처리(학생 객체를 점수로 매핑)
+// 		IntStream scoreStream = studentStream.mapToInt(student -> student.getScore());
+//		//최종 처리(평균 점수)
+// 		double avg = scoreStream.average().getAsDouble();
 
-		//방법2: 메서드 체이닝 패턴
-		// mapToInt(): 객체를 int 값으로 매핑해서 IntStream으로 변환시킨다.
+		//방법2
+		// mapToInt(): 일반 객체 스트림을 int 스트림으로 변환
+		// average(): 평균 계산
+		// getAsDouble(): double 타입으로 가져오기
 		double avg = list.stream()
 				.mapToInt(student -> student.getScore())
-				.average()
-				.getAsDouble();
+				.average().getAsDouble();
 		
 		System.out.println("평균 점수: " + avg);
 	}

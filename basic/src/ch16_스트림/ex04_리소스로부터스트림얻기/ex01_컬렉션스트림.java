@@ -3,7 +3,6 @@ package ch16_스트림.ex04_리소스로부터스트림얻기;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
-
 /**
  * 리소스로부터 스트림 얻기
  *  - java.util.stream 패키지에는 스트림 인터페이스들이 있다.
@@ -27,6 +26,6 @@ public class ex01_컬렉션스트림 {
 		
 		//객체 스트림 얻기
 		Stream<Product> stream = list.stream();
-		stream.forEach(p -> System.out.println(p));
+		stream.forEach(System.out::println);
 	}
 }

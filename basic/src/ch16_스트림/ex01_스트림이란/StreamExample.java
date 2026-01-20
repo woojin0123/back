@@ -1,9 +1,9 @@
 package ch16_스트림.ex01_스트림이란;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.Stream;
-
 /**
  * 스트림(Stream)이란?
  *  - Java 8부터 컬렉션 및 배열 요소 반복 처리에 사용!
