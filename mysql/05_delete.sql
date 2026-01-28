@@ -55,12 +55,51 @@ DELETE FROM product
 WHERE category IS NULL;
 
 -- 9. 제목에 '테스트'가 포함된 게시글을 삭제하시오.
+DELETE FROM board
+WHERE title LIKE '%테스트%'
+
 -- 10. 평균 주문 금액보다 작은 주문을 삭제하시오.
+DELETE FROM orders
+WHERE total_price < (
+    -- 임시 테이블로 감싸서 해결
+    SELECT avg_price 
+    FROM (
+        SELECT AVG(total_price) AS avg_price 
+        FROM orders
+    ) AS temp -- 반드시 별칭(Alias)을 붙여야 합니다.
+);
+
 -- 11. 게시글을 2개 이상 작성한 작성자의 게시글을 삭제하시오.
+DELETE FROM board
+WHERE writer IN (
+    SELECT writer 
+    FROM (
+        SELECT writer 
+        FROM board 
+        GROUP BY writer 
+        HAVING COUNT(*) >= 2
+    ) AS temp_writers
+);
+
 -- 12. 등급이 BRONZE인 회원의 주문을 삭제하시오.
+DELETE orders FROM orders
+JOIN member ON orders.member_id = member.member_id
+WHERE member.grade = 'BRONZE';
+
 -- 13. 주문 상태가 '취소'인 주문을 삭제하시오.
+DELETE FROM orders WHERE status = '취소';
+
 -- 14. board 테이블의 모든 데이터를 삭제하시오.
+DELETE FROM board;
+
 -- 15. 같은 제목의 게시글이 여러 개일 경우, 가장 최근 글을 제외하고 삭제하시오.
+DELETE b1
+FROM board b1 JOIN board b2
+ON b1.title = b2.title
+AND b1.board_no < b2.board_no;
+
 
 SELECT * FROM member;
 SELECT * FROM orders;
+SELECT * FROM product;
+SELECT * FROM board;
